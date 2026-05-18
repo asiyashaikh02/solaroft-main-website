@@ -343,150 +343,320 @@
      <div class="text-center mb-8 md:mb-12">
       <span class="bg-teal-100 text-teal-700 text-sm font-semibold px-4 py-1 rounded-full">🌟 Our Plans</span>
       <h2 class="text-2xl md:text-4xl font-bold text-gray-900 mb-2 mt-4">Transparent Pricing Plans</h2>
-      <p class="text-base text-gray-600 max-w-2xl mx-auto px-2">From one-time cleaning to full protection plans.</p>
+      <p class="text-base text-gray-600 max-w-2xl mx-auto px-2">Choose the perfect plan for your solar system size.</p>
      </div>
      
-     <!-- Part 1: One Time & Calculator -->
-     <div class="grid md:grid-cols-2 gap-6 md:gap-8 mb-10">
-        <!-- One Time Card -->
-        <div class="bg-gray-50 rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col card-hover">
-            <div class="p-6 flex-grow">
-                <div class="w-12 h-12 bg-teal-100 rounded-full flex items-center justify-center mb-4"><i class="fas fa-award text-teal-600 text-lg"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Trial Professional Cleaning</h3>
-                <div class="mb-4"><span class="text-3xl font-extrabold text-gray-900">₹1200</span><span class="text-gray-500 text-sm">/ kW / visit</span></div>
-                <ul class="space-y-2 mb-6 text-sm text-gray-600">
-                 <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> 1 Professional Deep Cleaning</li>  
-                 <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Certified Technicians</li>             
-                 <li class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Visual Inspection Report</li>
-                </ul>
-            </div>
-            <div class="p-4 bg-gray-100 mt-auto border-t"><a href="#contact" class="block text-center w-full bg-gray-900 text-white py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors text-sm">Book Service</a></div>
+     <!-- System Size Selector -->
+     <div class="mb-10">
+        <div class="flex flex-wrap justify-center gap-4 mb-8">
+            <button onclick="
+                const allButtons = document.querySelectorAll('[id^=size-]');
+                const allPlans = document.querySelectorAll('.plan-group');
+                allButtons.forEach(btn => {
+                    btn.classList.remove('bg-teal-600','text-white','shadow-lg');
+                    btn.classList.add('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                });
+                allPlans.forEach(plan => plan.classList.add('hidden'));
+                const selectedBtn = document.getElementById('size-1-3');
+                const selectedPlans = document.getElementById('plans-1-3');
+                selectedBtn.classList.remove('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                selectedBtn.classList.add('bg-teal-600','text-white','shadow-lg');
+                selectedPlans.classList.remove('hidden');
+            " id="size-1-3" class="px-6 py-3 rounded-full font-semibold transition-all bg-teal-600 text-white shadow-lg">1–3 kW</button>
+            <button onclick="
+                const allButtons = document.querySelectorAll('[id^=size-]');
+                const allPlans = document.querySelectorAll('.plan-group');
+                allButtons.forEach(btn => {
+                    btn.classList.remove('bg-teal-600','text-white','shadow-lg');
+                    btn.classList.add('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                });
+                allPlans.forEach(plan => plan.classList.add('hidden'));
+                const selectedBtn = document.getElementById('size-3-5');
+                const selectedPlans = document.getElementById('plans-3-5');
+                selectedBtn.classList.remove('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                selectedBtn.classList.add('bg-teal-600','text-white','shadow-lg');
+                selectedPlans.classList.remove('hidden');
+            " id="size-3-5" class="px-6 py-3 rounded-full font-semibold transition-all bg-gray-200 text-gray-700 hover:bg-gray-300">3–5 kW</button>
+            <button onclick="
+                const allButtons = document.querySelectorAll('[id^=size-]');
+                const allPlans = document.querySelectorAll('.plan-group');
+                allButtons.forEach(btn => {
+                    btn.classList.remove('bg-teal-600','text-white','shadow-lg');
+                    btn.classList.add('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                });
+                allPlans.forEach(plan => plan.classList.add('hidden'));
+                const selectedBtn = document.getElementById('size-5-10');
+                const selectedPlans = document.getElementById('plans-5-10');
+                selectedBtn.classList.remove('bg-gray-200','text-gray-700','hover:bg-gray-300');
+                selectedBtn.classList.add('bg-teal-600','text-white','shadow-lg');
+                selectedPlans.classList.remove('hidden');
+            " id="size-5-10" class="px-6 py-3 rounded-full font-semibold transition-all bg-gray-200 text-gray-700 hover:bg-gray-300">5–10 kW</button>
         </div>
 
-        <!-- Calculator Card -->
-        <div class="bg-gray-50 rounded-2xl shadow-lg border border-gray-200 overflow-hidden flex flex-col card-hover">
-            <div class="p-6 flex-grow">
-                <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4"><i class="fas fa-calculator text-blue-600 text-lg"></i></div>
-                <h3 class="text-lg font-bold text-gray-900 mb-2">Price Calculator</h3>
-                <p class="text-gray-500 text-xs mb-4">Calculate your AMC cost instantly.</p>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">System Capacity (KW)</label>
-                    <input type="number" id="kw-input" placeholder="e.g. 5" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-teal-500 outline-none text-base font-semibold text-center bg-white text-sm">
+        <!-- 1–3 kW Plans -->
+        <div id="plans-1-3" class="plan-group">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                <!-- CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Essential Care</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹2,499</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹749 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 2 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: Small homes
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose CARE</button>
+                    </div>
                 </div>
-                <div id="calc-results-box" class="space-y-2 hidden mb-4">
-                    <div class="flex justify-between bg-white p-2 rounded border text-sm"><span class="text-gray-500">Silver:</span> <span id="res-silver" class="font-bold text-gray-800">₹0</span></div>
-                    <div class="flex justify-between bg-teal-50 p-2 rounded border border-teal-200 text-sm"><span class="text-teal-700 font-medium">Gold:</span> <span id="res-gold" class="font-bold text-teal-700">₹0</span></div>
-                    <div class="flex justify-between bg-white p-2 rounded border text-sm"><span class="text-gray-500">Platinum:</span> <span id="res-platinum" class="font-bold text-gray-800">₹0</span></div>
+
+                <!-- CARE+ Plan (Most Popular) -->
+                <div class="bg-white rounded-2xl shadow-2xl border-2 border-teal-500 overflow-hidden flex flex-col relative transform md:scale-105 z-10">
+                    <div class="bg-teal-500 text-white text-xs font-bold uppercase tracking-wider py-2 text-center">⭐ Most Popular</div>
+                    <div class="p-6 flex-grow pt-4">
+                        <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">CARE+</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Regular Maintenance</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹3,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹1,199 × 4</div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> 4 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-yellow-50 mt-6 p-4 rounded-xl text-sm text-yellow-800">
+                         Best For: Regular maintenance
+                       </p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-teal-600 text-white py-2.5 rounded-lg font-semibold shadow-lg text-sm">Choose CARE+ ⭐</button>
+                    </div>
                 </div>
-                <button id="calculate-btn" class="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors mt-2 text-sm">Calculate Estimate</button>
+
+                <!-- TOTAL CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">TOTAL CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Premium Protection</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹5,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹1,799 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 6 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: High-dust / premium homes
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose TOTAL CARE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3–5 kW Plans -->
+        <div id="plans-3-5" class="plan-group hidden">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                <!-- CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Essential Care</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹3,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹1,199 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 2 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: Standard homes
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose CARE</button>
+                    </div>
+                </div>
+
+                <!-- CARE+ Plan (Most Popular) -->
+                <div class="bg-white rounded-2xl shadow-2xl border-2 border-teal-500 overflow-hidden flex flex-col relative transform md:scale-105 z-10">
+                    <div class="bg-teal-500 text-white text-xs font-bold uppercase tracking-wider py-2 text-center">⭐ Most Popular</div>
+                    <div class="p-6 flex-grow pt-4">
+                        <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">CARE+</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Best Value</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹5,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹1,799 × 4</div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> 4 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-yellow-50 mt-6 p-4 rounded-xl text-sm text-yellow-800">
+                         Best For: Best value
+                       </p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-teal-600 text-white py-2.5 rounded-lg font-semibold shadow-lg text-sm">Choose CARE+ ⭐</button>
+                    </div>
+                </div>
+
+                <!-- TOTAL CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">TOTAL CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Premium Care</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹8,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹2,499 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 6 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: Priority care
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose TOTAL CARE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5–10 kW Plans -->
+        <div id="plans-5-10" class="plan-group hidden">
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
+                <!-- CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Essential Care</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹5,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹1,799 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 2 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: Large homes
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose CARE</button>
+                    </div>
+                </div>
+
+                <!-- CARE+ Plan (Most Popular) -->
+                <div class="bg-white rounded-2xl shadow-2xl border-2 border-teal-500 overflow-hidden flex flex-col relative transform md:scale-105 z-10">
+                    <div class="bg-teal-500 text-white text-xs font-bold uppercase tracking-wider py-2 text-center">⭐ Most Popular</div>
+                    <div class="p-6 flex-grow pt-4">
+                        <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">CARE+</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Premium Maintenance</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹8,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹2,499 × 4</div>
+                        <ul class="space-y-2 mb-6 text-sm text-gray-700">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> 4 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-yellow-50 mt-6 p-4 rounded-xl text-sm text-yellow-800">
+                         Best For: Villas / small offices
+                       </p>
+                    </div>
+                    <div class="p-4 bg-gray-50 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-teal-600 text-white py-2.5 rounded-lg font-semibold shadow-lg text-sm">Choose CARE+ ⭐</button>
+                    </div>
+                </div>
+
+                <!-- TOTAL CARE Plan -->
+                <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
+                    <div class="p-6 flex-grow">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">TOTAL CARE</span>
+                        <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Maximum Protection</h3>
+                        <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹13,999</span><span class="text-gray-500 text-xs">/ year</span></div>
+                        <div class="text-sm text-gray-600 mb-4"><span class="font-medium">Quarterly Autopay:</span> ₹3,999 × 4</div>
+                        <ul class="space-y-2 mb-6 text-xs text-gray-600">
+                            <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 6 cleaning visits/year</li>
+                        </ul>
+                        <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
+                        Best For: Maximum protection
+                        </p>
+                    </div>
+                    <div class="p-4 bg-gray-100 mt-auto border-t">
+                        <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose TOTAL CARE</button>
+                    </div>
+                </div>
             </div>
         </div>
      </div>
 
-     <!-- Part 2: AMC Plans -->
-     <h3 class="text-lg md:text-xl font-bold text-gray-800 text-center mb-6">Annual Maintenance Contracts</h3>
-     <div class="grid md:grid-cols-3 gap-6 md:gap-8 items-stretch">
-      
-        <!-- Silver Plan -->
-        <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
-            <div class="p-6 flex-grow">
-                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Silver Care</span>
-                <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Essential Support</h3>
-                <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹2,500</span><span class="text-gray-500 text-xs">/ kW / year</span></div>
-                <ul class="space-y-2 mb-6 text-xs text-gray-600">
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 2 scheduled cleanings/year</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Basic electrical inspection</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Fault reporting & reporting</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i>  Service documentation</li>
-                </ul>
-                <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
-                Ideal for: Residential and first-time AMC users
-                </p>
-            </div>
-            <div class="p-4 bg-gray-100 mt-auto border-t">
-                <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose Silver</button>
-            </div>
+     <!-- Comparison Table -->
+     <div class="mt-10 md:mt-16 overflow-x-auto">
+        <h3 class="text-lg md:text-xl font-bold text-gray-800 text-center mb-6">Compare All Plans</h3>
+        <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+            <table class="w-full text-sm">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-4 py-3 text-left font-bold text-gray-600 border-b">System Size</th>
+                        <th class="px-4 py-3 text-center font-bold text-gray-600 border-b">CARE</th>
+                        <th class="px-4 py-3 text-center font-bold text-teal-600 border-b bg-teal-50/50">CARE+ (Most Popular)</th>
+                        <th class="px-4 py-3 text-center font-bold text-gray-600 border-b">TOTAL CARE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1–3 kW -->
+                    <tr class="border-b">
+                        <td class="px-4 py-4 font-medium text-gray-800">1–3 kW</td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹2,499 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹749 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">2 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center bg-teal-50/30">
+                            <div class="font-bold text-teal-700 text-lg">₹3,999 / year</div>
+                            <div class="text-teal-600 text-xs mt-1">or ₹1,199 / quarter</div>
+                            <div class="text-teal-700 text-xs mt-2 font-medium">4 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹5,999 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹1,799 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">6 cleanings / year</div>
+                        </td>
+                    </tr>
+                    <!-- 3–5 kW -->
+                    <tr class="border-b bg-gray-50/30">
+                        <td class="px-4 py-4 font-medium text-gray-800">3–5 kW</td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹3,999 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹1,199 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">2 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center bg-teal-50/50">
+                            <div class="font-bold text-teal-700 text-lg">₹5,999 / year</div>
+                            <div class="text-teal-600 text-xs mt-1">or ₹1,799 / quarter</div>
+                            <div class="text-teal-700 text-xs mt-2 font-medium">4 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹8,999 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹2,499 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">6 cleanings / year</div>
+                        </td>
+                    </tr>
+                    <!-- 5–10 kW -->
+                    <tr>
+                        <td class="px-4 py-4 font-medium text-gray-800">5–10 kW</td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹5,999 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹1,799 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">2 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center bg-teal-50/30">
+                            <div class="font-bold text-teal-700 text-lg">₹8,999 / year</div>
+                            <div class="text-teal-600 text-xs mt-1">or ₹2,499 / quarter</div>
+                            <div class="text-teal-700 text-xs mt-2 font-medium">4 cleanings / year</div>
+                        </td>
+                        <td class="px-4 py-4 text-center">
+                            <div class="font-bold text-gray-900 text-lg">₹13,999 / year</div>
+                            <div class="text-gray-500 text-xs mt-1">or ₹3,999 / quarter</div>
+                            <div class="text-gray-600 text-xs mt-2">6 cleanings / year</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-
-        <!-- Gold Plan -->
-        <div class="bg-white rounded-2xl shadow-2xl border-2 border-teal-500 overflow-hidden flex flex-col relative transform md:scale-105 z-10">
-            <div class="bg-teal-500 text-white text-xs font-bold uppercase tracking-wider py-2 text-center">⭐ Most Recommended</div>
-            <div class="p-6 flex-grow pt-4">
-                <span class="text-xs font-bold text-teal-600 uppercase tracking-wider">Gold Care</span>
-                <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Best Value</h3>
-                <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹4,000</span><span class="text-gray-500 text-xs">/ kW / year</span></div>
-                <ul class="space-y-2 text-sm text-gray-700">
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> 4 scheduled cleanings/year</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> Performance Health checks</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> Priority scheduling & faster response</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> Detailed performance reports</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500 font-bold"></i> Dedicated account manager</li>
-                </ul>
-                <p class="bg-yellow-50 mt-6 p-4 rounded-xl text-sm text-yellow-800">
-                 Best for: Balance of cost and performance
-               </p>
-            </div>
-            <div class="p-4 bg-gray-50 mt-auto border-t">
-                <button onclick="window.location.href='#contact'" class="block text-center w-full bg-teal-600 text-white py-2.5 rounded-lg font-semibold shadow-lg text-sm">Choose Gold ⭐</button>
-            </div>
-        </div>
-
-        <!-- Platinum Plan -->
-        <div class="bg-gray-50 rounded-2xl border border-gray-100 overflow-hidden flex flex-col card-hover">
-            <div class="p-6 flex-grow">
-                <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Platinum Care</span>
-                <h3 class="text-base font-bold text-gray-900 mb-2 mt-1">Complete Protection</h3>
-                <div class="my-4"><span class="text-2xl font-extrabold text-gray-900">₹6,000</span><span class="text-gray-500 text-xs">/ kW / year</span></div>
-                <ul class="space-y-2 mb-6 text-xs text-gray-600">
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> 6 scheduled cleanings/year</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i>  Seasonal optimization & checks</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Priority + emergency support</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Free minor repairs</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check-circle text-teal-500"></i> Annual performance guarantee</li>
-                </ul>
-                <p class="bg-gray-100 mt-6 p-4 rounded-xl text-sm">
-                Designed for: Maximum output & peace of mind
-                </p>
-            </div>
-            <div class="p-4 bg-gray-100 mt-auto border-t">
-                <button onclick="window.location.href='#contact'" class="block text-center w-full bg-gray-800 text-white py-2.5 rounded-lg font-semibold text-sm">Choose Platinum</button>
-            </div>
-        </div>
-     </div>
-
-     <!-- Part 3: Comparison Table -->
-     <div class="mt-10 md:mt-12 overflow-x-auto">
-        <h3 class="text-lg font-bold text-gray-800 text-center mb-6">Compare All Plans</h3>
-        <table class="w-full bg-white rounded-2xl shadow-lg overflow-hidden pricing-table text-xs">
-            <thead class="bg-gray-50 border-b">
-                <tr>
-                    <th class="font-bold text-gray-600 text-xs">Features</th>
-                    <th class="font-bold text-gray-600 text-xs">Silver</th>
-                    <th class="font-bold text-teal-600 bg-teal-50/50 text-xs">Gold ⭐</th>
-                    <th class="font-bold text-gray-600 text-xs">Platinum</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="font-medium text-gray-800">Professional Cleanings</td>
-                    <td>2 / Year</td>
-                    <td class="bg-teal-50/30 font-semibold text-teal-700">4 / Year</td>
-                    <td>6 / Year</td>
-                </tr>
-                <tr class="bg-gray-50/50">
-                    <td class="font-medium text-gray-800">Support Priority</td>
-                    <td>Standard</td>
-                    <td class="bg-teal-50/30 font-semibold text-teal-700">Priority</td>
-                    <td>Emergency</td>
-                </tr>
-                 <tr class="border-t-2">
-                    <td class="font-bold text-gray-800">Price (per kW / year)</td>
-                    <td class="font-bold text-gray-900">₹2,500</td>
-                    <td class="font-bold text-teal-700 bg-teal-50/50">₹4,000</td>
-                    <td class="font-bold text-gray-900">₹6,000</td>
-                </tr>
-            </tbody>
-        </table>
      </div>
 
     </div>
@@ -731,7 +901,9 @@
         </div>
         
         <div class="border-t border-gray-700 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+            <p class="text-xs text-gray-500">SYNCKRAFT  TECHNOLOGIES PVT.LTD.(Creators of SOLEROFT)</p>
             <p class="text-xs text-gray-500">© 2026 Solaroft. All rights reserved.</p>
+            <DIV>CIN:U62020MH2026PTC467409</DIV>
             <div class="flex gap-3">
                 <a href="https://www.facebook.com/solaroft" target="_blank" rel="noopener noreferrer" class="w-8 h-8 bg-gray-700 hover:bg-teal-600 rounded-full flex items-center justify-center transition-colors">
                     <i class="fab fa-facebook-f text-sm"></i>
@@ -782,7 +954,6 @@
       </button>
   </div>
 
-  <!-- Link to JS Folder -->
-  <script src="js/script.js"></script>
+
  </body>
 </html>
